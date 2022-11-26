@@ -1,0 +1,11 @@
+.site-layout-content {
+  min-height: 90vh;
+  padding: 1rem;
+  background: #000000;
+}
+
+@media screen and (max-width: 800) {
+  .site-layout-content {
+    padding: 0.5rem;
+  }
+}

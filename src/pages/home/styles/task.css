@@ -1,0 +1,46 @@
+.title {
+  text-align: center;
+  font-size: 2rem;
+  color: rgb(173, 173, 173);
+}
+
+.container {
+  min-height: fit-content;
+  display: flex;
+  padding: 1rem;
+  margin: 1% 25%;
+  align-items: center;
+  flex-wrap: nowrap;
+  background: black;
+  border: 0.1rem;
+  border-style: solid;
+  border-color: rgb(173, 173, 173);
+}
+
+.text {
+  display: inline-block;
+  color: rgb(173, 173, 173);
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    margin: 1% 0%;
+  }
+
+  .ant-layout-content {
+    padding: 0% !important;
+  }
+}
+
+.complete {
+  margin: 1%;
+  background-color: white; 
+}
+
+.complete:hover {
+  background-color: #00a362;
+}
+
+.cancel:hover {
+  background-color: #a12a2a;
+}

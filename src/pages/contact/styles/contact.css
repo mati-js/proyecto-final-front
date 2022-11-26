@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-input {
+  width: 30%;
+  background-color: black;
+  color: rgb(173, 173, 173);
+  text-align: left;
+  text-shadow: 0px 0px 0px rgb(42,42,42,.75);
+  border-color: rgb(173, 173, 173);
+  border-style: solid;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  font-size: 16px;
+  padding: 8px;
+  margin: 1%;
+}
+
+/* Esta animación está copiada  */
+.text-input:focus + .text-input::after,
+.text-input:valid + .text-input::after {
+  border-bottom: 3px solid rgb(173, 173, 173);
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+.send-button {
+  font-size: 16px;
+  margin-top: 1%;
+}
+
+@media screen and (max-width: 1200px) {
+  .text-input {
+    width: 70%;
+  }
+}
