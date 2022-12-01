@@ -12,8 +12,8 @@ const App = () => (
     <Header />
     
     <Routes>
-      <Route index path="/" element={<Container child={<TaskList/>} />} />
-      <Route path="contacto" element={<Container child={<Contact />} />} />
+      <Route path="/" element={<Container child={<TaskList/>} />} />
+      <Route path="contacto" element={<Container child={<Contact/>} />} />
     </Routes>
     
   </Layout>

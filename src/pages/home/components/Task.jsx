@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Input, Button } from 'antd';
 import { CheckOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import '../styles/task.css';
@@ -11,6 +11,8 @@ const Task = ({ taskId, onDestroy }) => {
   // Cuando una tarea se cancela, se bloquea
   // el input y se pone rojo el fondo.
   const [isCancelled, setCancelled] = useState(false);
+
+  const thisTask = useRef(null);
 
   // Setea la tarea como no-cancelada
   // (esto evita que el estado anterior
@@ -26,11 +28,16 @@ const Task = ({ taskId, onDestroy }) => {
     setCancelled(!isCancelled);
   };
 
-  // Acá llamo la función que le pasé
-  // como un prop. Al usar el hook 
-  // {useEffect}, la lista está actualizada
+  // Acá le puse una animación y le
+  // pongo un timeout para que espere
+  // que termine y luego, llamo la función
+  // que le pasé como un prop. Al usar el hook 
+  // {useEffect}, la lista de tareas está actualizada
   const handleDestroy = () => {
-    onDestroy(taskId);
+    thisTask.current.classList.add('deleted-task');
+    setTimeout(() => {
+      onDestroy(taskId)
+    }, 300); // 300 ms es justo lo que dura la animación
   }
 
   const setCorrectBackground = () => {
@@ -40,7 +47,7 @@ const Task = ({ taskId, onDestroy }) => {
   };
 
   return (
-    <div className='container' style={setCorrectBackground()}>
+    <div ref={thisTask} className='container' style={setCorrectBackground()}>
       <Input className='text' style={isDone || isCancelled ? {textDecoration: 'line-through'} : {textDecoration: 'none'}} placeholder='Editame' bordered={false} disabled={isDone || isCancelled}/>
       <Button className='complete' onClick={handleDoneTask} size='middle' icon={ <CheckOutlined/> }/>
       <Button className='cancel' onClick={isCancelled ? handleDestroy : handleCancelledTask} size='middle' icon={ <CloseCircleOutlined /> }/>

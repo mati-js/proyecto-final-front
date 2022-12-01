@@ -20,21 +20,22 @@
   margin: 1%;
 }
 
-/* Esta animación está copiada  */
-.text-input:focus + .text-input::after,
-.text-input:valid + .text-input::after {
-  border-bottom: 3px solid rgb(173, 173, 173);
-  transform: translateX(-100%);
-  transition: all 0.3s ease;
-}
-
 .send-button {
   font-size: 16px;
+  padding: 1% 2% 1% 2%;
   margin-top: 1%;
+  color: rgb(173, 173, 173);
+  background-color: black;
+  border-color: rgb(173, 173, 173);
 }
 
 @media screen and (max-width: 1200px) {
   .text-input {
     width: 70%;
   }
+}
+
+/* Swal modal */
+.swal-modal {
+  border: 3px solid white;
 }

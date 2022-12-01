@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from '@formspree/react';
+import swal from 'sweetalert';
 import '../styles/contact.css';
 
 const Contact = () => {
+
   const [isValidEmail, setEmail] = useState(true);
   // Esto te lo da formspree
   const [state, handleSubmit] = useForm('xoqbjpvd');
@@ -12,13 +14,25 @@ const Contact = () => {
   // Sinceramente quería probar de hacerlo yo jaja
   const handleEmailChange = (event) => {
     let actualEmail = event.target.value;
-
     setEmail(actualEmail.includes('@') && actualEmail.includes('.'));
   };
 
   const getCorrectBorder = () => {
     return isValidEmail ? 'rgb(173, 173, 173)' : 'red';
   }
+
+  useEffect(() => {
+    if (state.succeeded) {
+      swal({
+        title: "Listo!",
+        text: "Formulario enviado!",
+        icon: "success",
+        button: "Volver",
+      })
+    }
+    
+  })
+
   
   return (
     <div>
@@ -27,7 +41,7 @@ const Contact = () => {
         <input className='text-input' type='text' placeholder='Tu nombre' name='name' required autoComplete='false'/>
         <input className='text-input' style={{borderColor: getCorrectBorder()}} onChange={handleEmailChange} type='email' placeholder='Tu mail' name='email' required autoComplete='false'/>
         <textarea className='text-input' type='text' placeholder='Tu mensaje' name='mensaje' required />
-        <button className='send-button' disabled={state.submitting}>Enviar</button>
+        <button className='send-button' type='submit' disabled={state.submitting}>Enviar</button>
       </form>
     </div>
   );

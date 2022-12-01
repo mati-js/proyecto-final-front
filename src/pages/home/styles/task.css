@@ -1,7 +1,7 @@
 .title {
   text-align: center;
   font-size: 2rem;
-  color: rgb(173, 173, 173);
+  color: #adadad;
 }
 
 .container {
@@ -38,9 +38,42 @@
 }
 
 .complete:hover {
-  background-color: #00a362;
+  background-color: rgb(0, 163, 98);
 }
 
 .cancel:hover {
   background-color: #a12a2a;
+}
+
+
+/* Copiado desde Animista */
+.deleted-task {
+	-webkit-animation: deleted-task 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: deleted-task 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes deleted-task{
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes deleted-task {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
 }
