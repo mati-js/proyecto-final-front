@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   flex-direction: row;
   flex-wrap: nowrap;
   margin-top: 1%;
@@ -22,8 +22,4 @@
 
 .header-button:hover {
   color: #0066cc;
-}
-
-.text-input {
-
 }

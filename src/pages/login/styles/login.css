@@ -1,0 +1,42 @@
+.account {
+  /* Center the content */
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 2%;
+  white-space: nowrap;
+
+  /* Size */
+  height: 100%;
+
+  /* Font color & size*/
+  color: rgb(173, 173, 173);
+  font-size: 18px;
+}
+
+.avatar {
+  /* Center the content */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  /* Size */
+  height: 3rem;
+  width: 3rem;
+}
+
+.avatar-image {
+  /* Size */
+  height: 60%;
+  width: 60%;
+  border-radius: 50%;
+}
+
+.avatar-image:hover {
+  /* Shadow the image */
+  box-shadow: 0 0 0 3px #0066cc;
+
+  /* Change the cursor */
+  cursor: pointer;
+}

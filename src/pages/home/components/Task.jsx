@@ -12,6 +12,7 @@ const Task = ({ taskId, onDestroy }) => {
   // el input y se pone rojo el fondo.
   const [isCancelled, setCancelled] = useState(false);
 
+  // Ref para la tarea actual
   const thisTask = useRef(null);
 
   // Setea la tarea como no-cancelada
