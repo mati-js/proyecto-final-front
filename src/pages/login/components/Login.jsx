@@ -18,7 +18,7 @@ const Login = () => {
   return (
     <div>
       {loggedUser === null ? 
-        <a className='header-button' onClick={signInWithGoogle}>Login</a> :
+        <button className='header-button' onClick={signInWithGoogle}>Login</button> :
         <Account pic={loggedUser.photoURL} name={loggedUser.displayName} />
       }
     </div>

@@ -21,7 +21,8 @@ const Account = ({name, pic}) => {
   return (
     <div className='account'>
       <div className='avatar'>
-        <Tooltip title={popupText} placement='bottom' color='blue'>
+        
+        <Tooltip title={popupText} placement='bottom' color='blue' open={isWarned}>
           <img className='avatar-image' loading='lazy' src={pic} alt={name} onClick={showPopup} />
         </Tooltip>
         
