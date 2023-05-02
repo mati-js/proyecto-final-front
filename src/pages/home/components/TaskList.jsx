@@ -3,8 +3,13 @@ import { Button, Tooltip  } from 'antd';
 import { PlusSquareOutlined } from '@ant-design/icons';
 import Task from './Task';
 
-const TaskList = () => {
-  const [tasks, setTasks] = useState([]);
+const TaskList = ({ persistedTasks }) => {
+  const [tasks, setTasks] = useState(() => {
+    let oldTasks = persistedTasks.map((task) => {
+      return <Task onDestroy={destroyTask} initialText={task.text} taskId={task.id} key={task.id}/>
+    });
+    return oldTasks;
+  });
   const taskRef = useRef(tasks);
 
   const destroyTask = (taskId) => {
@@ -18,13 +23,32 @@ const TaskList = () => {
     taskRef.current = tasks;
   }, [tasks]);
 
+  const getActualTasks = () => {
+    let tasksInfo = [];
+    
+    tasks.forEach(task => {
+      tasksInfo.push(task.getTaskInfo());
+    });
+
+    return tasksInfo;
+  }
+
   const handleNewTask = () => {
     // El ID pasa a ser un timestamp (igual al key).
     // Le paso un task ID para tener un prop desde 
     // la task y así poder levantarla y poder quitarla
     // del array {tasks} (que es un estado de la lista).
     let taskId = + new Date();
-    setTasks([...tasks, <Task onDestroy={destroyTask} taskId={taskId} key={taskId}/>])
+    setTasks([...tasks, 
+      <Task
+        onDestroy={destroyTask}
+        taskId={taskId}
+        key={taskId}
+        initialText={null}
+        wasDone={false}
+        wasCancelled={false}
+      />
+    ]);
   };
 
   return (

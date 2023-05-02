@@ -3,14 +3,14 @@ import { Input, Button } from 'antd';
 import { CheckOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import '../styles/task.css';
 
-const Task = ({ taskId, onDestroy }) => {
+const Task = ({ taskId, onDestroy, initialText, wasDone, wasCancelled }) => {
   // Cuando una tarea se completa, se bloquea
   // el input y se pone verde el fondo.
-  const [isDone, setDone] = useState(false);
+  const [isDone, setDone] = useState(wasDone ?? false);
 
   // Cuando una tarea se cancela, se bloquea
   // el input y se pone rojo el fondo.
-  const [isCancelled, setCancelled] = useState(false);
+  const [isCancelled, setCancelled] = useState(wasCancelled ?? false);
 
   // Ref para la tarea actual
   const thisTask = useRef(null);
@@ -41,6 +41,15 @@ const Task = ({ taskId, onDestroy }) => {
     }, 300); // 300 ms es justo lo que dura la animación
   }
 
+  const getTaskInfo = () => {
+    return {
+      id: taskId,
+      text: thisTask.current.querySelector('.text').value,
+      isDone: isDone,
+      isCancelled: isCancelled
+    };
+  }
+
   const setCorrectBackground = () => {
     return {
       background: `${isDone ? '#00a362' : isCancelled ? '#a12a2a' : 'black'}`
@@ -49,7 +58,7 @@ const Task = ({ taskId, onDestroy }) => {
 
   return (
     <div ref={thisTask} className='container' style={setCorrectBackground()}>
-      <Input className='text' style={isDone || isCancelled ? {textDecoration: 'line-through'} : {textDecoration: 'none'}} placeholder='Editame' bordered={false} disabled={isDone || isCancelled}/>
+      <Input className='text' style={isDone || isCancelled ? {textDecoration: 'line-through'} : {textDecoration: 'none'}} placeholder='Editame' defaultValue={initialText ?? null} bordered={false} disabled={isDone || isCancelled}/>
       <Button className='complete' onClick={handleDoneTask} size='middle' icon={ <CheckOutlined/> }/>
       <Button className='cancel' onClick={isCancelled ? handleDestroy : handleCancelledTask} size='middle' icon={ <CloseCircleOutlined /> }/>
     </div>

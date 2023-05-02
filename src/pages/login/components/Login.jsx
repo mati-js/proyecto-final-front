@@ -9,6 +9,7 @@ const Login = () => {
     firebase.auth().onAuthStateChanged(user => {
       
       if (user && (user !== loggedUser)) {    
+        // Get user data from firestore
         setLoggedUser(user);
       } else setLoggedUser(null);
     
