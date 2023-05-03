@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Account from './Account';
 import firebase, { signInWithGoogle } from '../../../services/firebase';
 
-const Login = () => {
+const Login = ({ persistedTasks }) => {
   let [loggedUser, setLoggedUser] = useState(null);
   
   useEffect(() => {

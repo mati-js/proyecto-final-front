@@ -4,12 +4,16 @@ import { PlusSquareOutlined } from '@ant-design/icons';
 import Task from './Task';
 
 const TaskList = ({ persistedTasks }) => {
+
   const [tasks, setTasks] = useState(() => {
-    let oldTasks = persistedTasks.map((task) => {
+    
+    let oldTasks = persistedTasks.length !== 0 ? persistedTasks?.map((task) => {
       return <Task onDestroy={destroyTask} initialText={task.text} taskId={task.id} key={task.id}/>
-    });
+    }) : persistedTasks;
+
     return oldTasks;
   });
+  
   const taskRef = useRef(tasks);
 
   const destroyTask = (taskId) => {

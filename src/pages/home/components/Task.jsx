@@ -52,7 +52,7 @@ const Task = ({ taskId, onDestroy, initialText, wasDone, wasCancelled }) => {
 
   const setCorrectBackground = () => {
     return {
-      background: `${isDone ? '#00a362' : isCancelled ? '#a12a2a' : 'black'}`
+      background: `${isDone ? '#00a362' : (isCancelled ? '#a12a2a' : 'black')}`
     };
   };
 
