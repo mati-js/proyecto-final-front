@@ -2,12 +2,12 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDdYwmOrL1EcELB1IvDlu96tffPnRFN1uw",
-  authDomain: "proyecto-final-utn-5c5d4.firebaseapp.com",
-  projectId: "proyecto-final-utn-5c5d4",
-  storageBucket: "proyecto-final-utn-5c5d4.appspot.com",
-  messagingSenderId: "834290670669",
-  appId: "1:834290670669:web:d306de4b88657279325004"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_ID,
+  appId: process.env.APP_ID
 };
 
 // Initialize Firebase

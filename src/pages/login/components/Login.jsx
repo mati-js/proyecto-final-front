@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Account from './Account';
 import firebase, { signInWithGoogle } from '../../../services/firebase';
 
-const Login = ({ persistedTasks }) => {
+const Login = ({ setPersistedTasks }) => {
   let [loggedUser, setLoggedUser] = useState(null);
   
   useEffect(() => {
@@ -11,6 +11,7 @@ const Login = ({ persistedTasks }) => {
       if (user && (user !== loggedUser)) {    
         // Get user data from firestore
         setLoggedUser(user);
+        getTasks(user.uid);
       } else setLoggedUser(null);
     
     });

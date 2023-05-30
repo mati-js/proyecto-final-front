@@ -19,7 +19,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Container child={<TaskList persistedTasks={tasks} />} />} />
         <Route path="contacto" element={<Container child={<Contact/>} />} />
-        <Route path='login' element={<Container child={<Login setTasks={setTasks} />} />} />
+        <Route path='login' element={<Container child={<Login setPersistedTasks={setTasks} />} />} />
       </Routes>
       
     </Layout>
